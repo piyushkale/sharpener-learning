@@ -1,11 +1,13 @@
-const express =require('express')
-const app = express()
-const orderRoute = require('./routes/order')
-const userRoute = require('./routes/users')
-app.get('/',(req,res)=>{
-    res.send('<h1>Home page</h1>')
-})
-app.use('/order',orderRoute)
-app.use('/user',userRoute)
+const express = require("express");
+const app = express();
+const bookRouter = require("./routes/books");
 
-app.listen(3000)
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("<h1> HomePage </h1>");
+});
+
+app.use("/books", bookRouter);
+
+app.listen(3000);
