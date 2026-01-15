@@ -1,25 +1,17 @@
-const express = require('express')
-const app = express()
-const studentRouter = require('./routes/students')
-const courseRouter = require('./routes/course')
+const express = require("express");
+const app = express();
 
-//default route
+const userRoute = require("./routes/user");
+const productRoute = require("./routes/product");
+const cartRoute = require("./routes/cart");
+
 app.get('/',(req,res)=>{
-    res.send('<h1>Welcome to the Student & Course Portal API!</h1>')
+    res.send('<h1>Welcome to homepage</h1>')
 })
 
- //Student route
-app.use('/students',studentRouter)
+app.use("/users", userRoute);
+app.use("/products", productRoute);
+app.use("/cart", cartRoute);
 
- //Course route
-app.use('/courses',courseRouter)
 
-// Handling invalid routes
-app.use((req,res)=>{
-    res.send(`<h1>Invalid route ${req.url}</h1>`)
-})
-
-//server 
-app.listen(3000,()=>{
-    console.log("server is running on port 3000")
-})
+app.listen(3000);
