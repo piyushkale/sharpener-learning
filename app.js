@@ -1,17 +1,13 @@
-const express = require("express");
-const app = express();
+const express = require('express')
+const app = express()
+const path = require('path')
 
-const userRoute = require("./routes/user");
-const productRoute = require("./routes/product");
-const cartRoute = require("./routes/cart");
 
 app.get('/',(req,res)=>{
-    res.send('<h1>Welcome to homepage</h1>')
+    const resPath = path.join(__dirname,".","view","index.html")
+    res.sendFile(resPath)
 })
 
-app.use("/users", userRoute);
-app.use("/products", productRoute);
-app.use("/cart", cartRoute);
-
-
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log("server is running at port 3000")
+})
