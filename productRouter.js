@@ -9,5 +9,11 @@ router.get('/',(req,res)=>{
     //sending html file as response
     res.sendFile(resPath)
 })
+router.post('/',(req,res)=>{
+
+    const data = req.body 
+    console.log(data)
+    res.json(data)
+})
 
 module.exports = router
